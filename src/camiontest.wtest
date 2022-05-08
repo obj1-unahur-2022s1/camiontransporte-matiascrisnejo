@@ -1,3 +1,44 @@
-import camion.*
+ import camion.*
 import cosas.*
 
+describe "camion cargado" {
+	
+	method initialize(){
+		bumblebee.esAuto(false)
+		arena.peso(150)
+		bateriaAntiarea.tieneMisiles(true)
+		paqueteLadrillos.cantidadDeLadrillos(80)
+		embalajeSeguridad.cosaAdentro(paqueteLadrillos)
+		
+	}
+	
+	test "camion agregar a bumblebee " {
+		camion.cargar(bumblebee)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		camion.cargar(embalajeSeguridad)
+		assert.equals(2410,camion.pesoTotal())
+		
+	}
+	test "bumblebee como robot" {
+		
+		assert.equals(800,bumblebee.peso())
+	}
+	test "arena pesa 150 Kg"{
+		
+		assert.equals(150,arena.peso())
+	}
+	test "bateria con misiles " {
+		
+		assert.equals(100,bateriaAntiarea.nivelPeligrosidad())
+	}
+	
+	test "embalaje envuelve a paquete de ladrillos 80 unidades" {
+	
+		assert.equals(160,embalajeSeguridad.peso())
+	}
+}
+
+
+
+	

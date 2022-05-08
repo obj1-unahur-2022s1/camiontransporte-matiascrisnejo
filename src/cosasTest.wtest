@@ -1,2 +1,38 @@
 import camion.*
 import cosas.*
+
+describe "cosas" {
+	
+	test "paquete de ladrillos peso" {
+		assert.equals(8,paqueteLadrillos.peso())		
+	}
+	
+	test "batería antiaérea tiene misilines,peso y nivel de peligrosidad" {
+		
+		assert.that(bateriaAntiarea.tieneMisiles())
+		
+		assert.equals(300,bateriaAntiarea.peso())
+		
+		assert.equals(100,bateriaAntiarea.nivelPeligrosidad())
+		
+	 }
+	 
+	 test "residuos radioactivos agregar 30 Kg" {
+	 	residuosRadioactivos.peso(30)
+	 	assert.equals(30,residuosRadioactivos.peso())
+	 }
+	 test "contenedor se agregan 3 cosas y chequea el peso" {
+	 		contenedor.agregarCosa(knightRider)
+	 		contenedor.agregarCosa(paqueteLadrillos)
+	 		contenedor.agregarCosa(bateriaAntiarea)
+	 		assert.equals(908,contenedor.peso())
+	 		
+	 }
+	 
+	 test "embalaje adentro residuos radiactivos con 30 Kg de peso" {
+	 	embalajeSeguridad.cosaAdentro(residuosRadioactivos)
+	 	assert.equals(residuosRadioactivos,embalajeSeguridad.cosaAdentro())
+	 	
+	 }
+	 
+}
