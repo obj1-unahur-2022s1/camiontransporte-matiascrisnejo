@@ -4,6 +4,10 @@ object knightRider {
 	
 	method nivelPeligrosidad() = 10
 	
+	method bultos() = 1
+	
+	method sufrirCambio() {}
+	
 }
 
 object bumblebee {
@@ -12,6 +16,11 @@ object bumblebee {
 	method peso() = 800
 	
 	method nivelPeligrosidad() = if(esAuto){15}else{30}
+	
+	method bultos() = 2
+	
+	method sufrirCambio(){esAuto = false}
+	
 	
 }
 
@@ -22,7 +31,10 @@ object paqueteLadrillos{
 	method peso() = cantidadDeLadrillos * 2
 	
 	method nivelPeligrosidad() = 2
-		
+	
+	method bultos() = if(cantidadDeLadrillos <= 100){1}else if(cantidadDeLadrillos >100 and cantidadDeLadrillos <= 300){2}else{3}
+
+	method sufrirCambio(){cantidadDeLadrillos += 12}	
 }
 
 
@@ -31,6 +43,10 @@ object arena {
 	var property peso = 0
 	
 	method nivelPeligrosidad() = 1
+	
+	method bultos() = 1
+	
+	method sufrirCambio(){peso += 20}
 	
 }
 
@@ -43,6 +59,10 @@ object bateriaAntiarea {
 	
 	method nivelPeligrosidad() = if(tieneMisiles){100}else{0}
 	
+	method bultos() = if(not tieneMisiles){1}else{2}
+	
+	method sufrirCambio(){tieneMisiles = true}
+
 }
 
 object contenedor {
@@ -57,6 +77,10 @@ object contenedor {
 
 	method agregarCosa(unaCosa) = cosasAdentro.add(unaCosa)
 	
+	method bultos() = 1 + cosasAdentro.sum({ c => c.bultos() })
+	
+	method sufrirCambio() = cosasAdentro.forEach({ c => c.sufrirCambio() })
+
 }
 
 object residuosRadioactivos {
@@ -66,6 +90,10 @@ object residuosRadioactivos {
 	method peso() = peso
 	
 	method nivelPeligrosidad() = 200
+	
+	method bultos() = 1
+	
+	method sufrirCambio(){peso += 15}
 	
 }
 
@@ -77,8 +105,9 @@ object embalajeSeguridad {
 	
 	method nivelPeligrosidad() = (cosaAdentro.nivelPeligrosidad() / 2)
 	
+	method bultos() = 2
+	
+	method sufrirCambio(){}
+	
 }
-
-
-
 

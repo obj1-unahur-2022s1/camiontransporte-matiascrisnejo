@@ -5,7 +5,10 @@ object camion {
 	const property pesoCamion = 1000
 	const property pesoMaximo = 2500
 	
-	method cargar(cosa){carga.add(cosa)}
+	method cargar(cosa){
+		carga.add(cosa)
+		carga.sufrirCambio()
+	}
 	
 	method descargar(cosa) = carga.remove(cosa)
 	
@@ -31,5 +34,5 @@ object camion {
 	
 	method pesos() = carga.map({ c => c.peso() })
 	
-	
+	method totalBultos() = carga.sum({ c => c.bultos() })
 }
