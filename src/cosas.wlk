@@ -53,7 +53,7 @@ object contenedor {
 	
 	method sumaTotalCosasAdentro() = cosasAdentro.sum({c => c.peso()})
 	
-	method nivelPeligrosidad() = 0.max(cosasAdentro.max({c => c.nivelPeligrosidad() }))
+	method nivelPeligrosidad() = 0.max((cosasAdentro.max({c => c.nivelPeligrosidad() })).nivelPeligrosidad())
 
 	method agregarCosa(unaCosa) = cosasAdentro.add(unaCosa)
 	
@@ -75,7 +75,7 @@ object embalajeSeguridad {
 	
 	method peso() = cosaAdentro.peso()
 	
-	method nivelPeligrosidad() = (cosaAdentro.nivelPeligrosidad() / 2)
+	method nivelPeligrosidad() = (cosaAdentro.nivelPeligrosidad() * 0.5)
 	
 }
 

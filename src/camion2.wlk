@@ -7,7 +7,7 @@ object camion {
 	
 	method cargar(cosa){
 		carga.add(cosa)
-		carga.sufrirCambio()
+		cosa.sufrirCambio()
 	}
 	
 	method descargar(cosa) = carga.remove(cosa)
