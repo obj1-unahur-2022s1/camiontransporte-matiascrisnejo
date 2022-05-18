@@ -1,3 +1,6 @@
+/*
+ * Muy bien. Revisar solo 1 comentario
+ */
 import cosas.*
 
 object camion {
@@ -24,7 +27,9 @@ object camion {
 	
 	method objetosQueSuperanPeligrosidad(nivel) = carga.filter({ c => c.nivelPeligrosidad() > nivel })
 	
-	method objetosMasPeligrososQue(cosa) = carga.filter({ c => c.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
+	/* Podias reutlizar objetosQueSuperanPeligrosidad(nivel)  */
+	//method objetosMasPeligrososQue(cosa) = carga.filter({ c => c.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
+	method objetosMasPeligrososQue(cosa) = self.objetosMasPeligrososQue(cosa.nivelPeligrosidad()) 
 	
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad) = not self.excedidoDePeso() and carga.all({ c => c.nivelPeligrosidad() < nivelMaximoPeligrosidad })
 	

@@ -1,3 +1,6 @@
+/*
+ * Bien - Revisar solo 2 comentarios
+ */
 object knightRider {
 	
 	method peso() = 500
@@ -31,7 +34,7 @@ object paqueteLadrillos{
 	method peso() = cantidadDeLadrillos * 2
 	
 	method nivelPeligrosidad() = 2
-	
+	/*Podias usar el between */
 	method bultos() = if(cantidadDeLadrillos <= 100){1}else if(cantidadDeLadrillos >100 and cantidadDeLadrillos <= 300){2}else{3}
 
 	method sufrirCambio(){cantidadDeLadrillos += 12}	
@@ -73,7 +76,8 @@ object contenedor {
 	
 	method sumaTotalCosasAdentro() = cosasAdentro.sum({c => c.peso()})
 	
-	method nivelPeligrosidad() = 0.max(cosasAdentro.max({c => c.nivelPeligrosidad() }))
+	/* ojo el max te devuelve el objeto aca te falto llamar al método */
+	method nivelPeligrosidad() = 0.max(cosasAdentro.max({c => c.nivelPeligrosidad() }).nivelPeligrosidad())
 
 	method agregarCosa(unaCosa) = cosasAdentro.add(unaCosa)
 	
